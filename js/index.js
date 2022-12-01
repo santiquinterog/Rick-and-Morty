@@ -5,19 +5,20 @@ function mostrarPersonajes() {
   /* Ocultar botón */
   document.getElementById("botonMostrarPersonajes").classList.add("ocultar");
 
+  /* Petición al API */
   fetch(API_URL, { method: "GET" })
   .then((response) => response.json())
   .then((jsonResponse) => {
     const containerCards = document.getElementById("container-cards");
+    /* Cambiar algunas propiedades de la información que me trae el API */
     /* const imgCharacters = ["https://media.vandal.net/i/1200x630/9-2022/202292910312533_1.jpg", "https://pbs.twimg.com/media/FUqYS8jXoAAWSf9.jpg"]
     
     for (let index = 0; index < imgCharacters.length; index++) {
       jsonResponse.results[index].name = imgCharacters[index]
     } */
 
+    /* Asignación de tarjeta a cada persona del API */
     const template = jsonResponse.results.map((character)=>{
-
-      
       return (`
         <div class="card card-element">
           <img src="${character.image}" class="card-img-top" alt="${character.name}">
@@ -36,13 +37,10 @@ function mostrarPersonajes() {
       `)
     })
 
+    /* Agregación de las tarjetas al contenedor */
     for (let index = 0; index < template.length; index++) {
-      
       containerCards.innerHTML += template[index];
     }
-    
-    
   })
-
 }
 
