@@ -36,14 +36,10 @@ function mostrarPersonajes() {
       `)
     })
 
-
-    containerCards.innerHTML = template;
-
-
-    /* for (let index = 0; index < template.length; index++) {
+    for (let index = 0; index < template.length; index++) {
       
       containerCards.innerHTML += template[index];
-    } */
+    }
     
     
   })
